@@ -1,16 +1,33 @@
-## Hi there 👋
+# Hi there, I'm Icii White! 
 
-<!--
-**iciiwhite/iciiwhite** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### About Me
 
-Here are some ideas to get you started:
+I'm a Icii White , CEO [Golden Apple Technologies](#), "passionate backend developer" from Uganda.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- I’m currently working on **Developing an online cloud storage, best WhatsApp bot and Making Software Development a hobby to all**
+- I’m looking for help with **Backend Development**
+- Ask me about **Golden Apple Technologies**
+- How to reach me: [goldenapplecoders@gmail.com](mailto: goldenapplecoders@gmail.com)
+
+### Tech Stack
+
+<!-- You can use shields.io for cool badges -->
+**Languages and Tools:**
+
+![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Git](https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white)
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+
+<!-- Add more as needed -->
+
+### GitHub Stats
+
+<!-- These are just examples using an external service -->
+![Icii White's GitHub Stats](https://github-readme-stats.vercel.app/api?username=iciiwhite&show_icons=true&theme=radical)
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=iciiwhite&layout=compact&theme=radical)
+
+---
+
+From [@iciiwhite](https://github.com/iciiwhite)
