@@ -1,5 +1,6 @@
 # Hi there, I'm Icii White! 
 
+![o](profile%206.png)
 ### About Me
 
 I'm a Icii White , CEO [Golden Apple Technologies](#), "passionate backend developer" from Uganda.
