@@ -1,3 +1,1225 @@
-no content
-<a href="code (22).html">Visit My Tool</a>
-<br><a href="README.md">See README</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myGit</title>
+<head>
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
+          integrity="sha512-..." 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer">
+    <style>
+        :root {
+            --github-button: #2c974b;
+            --unsafe: #ff4a00;
+            --background-color: #ffffff; 
+            --text-color: #000000;      
+            --controls-bg: #f6f8fa;     
+            --border-color: #d1d5da;    
+            --repo-bg: #fff;            
+            --repo-name-color: darkcyan; 
+            --header-border-color: #d1d5da;
+            --hover-color: #e6e6e6;
+            }
+
+        body.dark-theme {
+            --background-color: black;
+            --text-color: #ffffff;
+            --controls-bg: #111111;     
+            --border-color: #333333;    
+            --repo-bg: #000;            
+            --repo-name-color: cyan;    
+            --github-button: #2c974b; 
+            --header-border-color: #333333;
+            --hover-color: #222222; 
+        }
+
+        body.dark-theme .repo-item {
+            border: 1px solid var(--border-color);
+            background-color: var(--controls-bg);
+        }
+        body.dark-theme #file-list, body.dark-theme #file-upload-list {
+            background-color: transparent;
+        }
+
+
+        .red { background: var(--unsafe); }
+
+        body { 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding-top: 5em;
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .controls { 
+            margin: 10px;
+            padding: 15px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 5px; 
+            background-color: var(--controls-bg);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .page:not(.active) { display: none; }
+        
+        .repo-list { list-style: none; padding: 0; }
+        
+        .repo-item { 
+            border: 1px solid var(--border-color); 
+            margin-bottom: 10px; 
+            padding: 15px; 
+            border-radius: 5px; 
+            background-color: var(--repo-bg);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        .repo-name { 
+            font-weight: bold; 
+            font-size: 1.1em; 
+            color: var(--repo-name-color); 
+            cursor: pointer;
+        }
+
+        .repo-link { text-decoration: none; color: var(--repo-name-color); font-weight: bold; }
+        
+        .private { color: var(--unsafe); margin-left: 10px; }
+        
+        button, input[type="text"], input[type="password"] { 
+            padding: 8px; 
+            border-radius: 4px; 
+            border: 1px solid var(--border-color); 
+            margin-bottom: 5px;
+            background-color: var(--controls-bg);
+            color: var(--text-color);
+        }
+        
+        input[type="text"], input[type="password"] { width: 95%; }
+        
+        textarea {
+            width: 95%;
+            border-radius: 4px;
+            font-family: monospace;
+            padding: 8px;
+            box-sizing: border-box;
+            background-color: var(--controls-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color); 
+        }
+        
+        button { 
+            cursor: pointer; 
+            background-color: var(--github-button); 
+            color: white; 
+            border: none;
+            margin-right: 5px;
+        }
+        
+        .action-button { 
+            background-color: var(--github-button); 
+            color: white; 
+            border: none; 
+            padding: 8px 12px; 
+        }
+        
+        .btn {
+            padding: 8px 12px;
+            background-color: var(--controls-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .delete-button { 
+            background-color: var(--unsafe); 
+            color: white; 
+            border: none; 
+            padding: 5px 10px; 
+            float: right;
+        }
+        
+        h2 { border-bottom: 2px solid var(--border-color); padding-bottom: 5px; }
+        
+        .success { color: var(--github-button); font-weight: bold; font-size: 1em; }
+        .error { color: var(--unsafe); font-weight: bold; font-size: 1em; }
+        .info { color: var(--repo-name-color); font-weight: bold; font-size: 1em; }
+
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 5px;
+            padding-bottom: 30px;
+            z-index: 100; 
+            border: none;
+            background-image: linear-gradient(to bottom, var(--text-color), transparent);
+            backdrop-filter: blur(2pt);
+        }
+        
+        body.dark-theme #header {
+            background-image: linear-gradient(to bottom, var(--text-color), transparent);
+        }
+        
+        #logo span{ color: var(--repo-name-color); }
+        body.dark #logo span{
+            color: var(--github-button);
+        }
+        #logo{
+            color: var(--background-color);
+            font-size: 2em;
+            font-weight: 900;
+            padding-bottom: 0;
+            margin-left: 10px;
+            float: left;
+        }
+
+
+        .file-controls { display: flex; justify-content: space-between; align-items: center; }
+        
+        #file-list {
+            max-height: 20em;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            margin-top: 5px;
+            padding: 0;
+            border-radius: 5px;
+            background-color: var(--controls-bg);
+        }
+        .file-item, .upload-file-item {
+            padding: 5px 10px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            word-break: break-all;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .file-item > span:first-child, .upload-file-item > span:first-child { flex-shrink: 0; margin-right: 5px; } 
+        .file-item:last-child { border-bottom: none; }
+        .file-item:hover, .upload-file-item:hover { background-color: var(--hover-color); }
+        
+        #file-upload-list {
+             list-style: none;
+             padding: 0;
+             max-height: 300px;
+             overflow-y: auto;
+             border: 1px solid var(--border-color);
+             margin-top: 10px;
+             border-radius: 5px;
+        }
+        .upload-file-item {
+            cursor: default;
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: var(--controls-bg); 
+            color: var(--text-color);
+            border-left: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: right 0.3s ease;
+        }
+        .nav-container.open { right: 0; }
+        .nav-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-header h2 { color: var(--text-color); font-weight: 500; }
+        .nav-links { padding: 1.0px 0; }
+        .nav-links a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border-left: 4px solid transparent;
+            display: flex; 
+        
+            align-items: center;
+        }
+        .nav-links span{
+            padding-left: 10px;
+        }
+        .nav-links a:hover {
+            background-color: var(--hover-color);
+            border-left: 4px solid var(--repo-name-color); 
+        }
+        #currentPathDisplay{
+font-weight: 900;
+min-width: 20%;
+max-width: 20%;
+width: 20%;
+overflow-x: auto;
+padding: 4px;
+border-radius: 4px;
+background : gray;  }
+.profile-picture{
+    width: 80%;
+    jeight: auto;
+}
+#profile{
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    
+    <!-- Header -->
+<div id="header">
+    <span id="logo">My<span>Git</span></span>
+    <button class="btn" style="float: right; margin-right: 10px; border: none; background: transparent; display: none; font-size: 1.5em; color: var(--text-color);" onclick="document.getElementById('nav-menu').classList.add('open')"><i class="fas fa-bars" hidden></i></button>
+</div>
+
+<!-- Menu (Sidebar) -->
+<div class="nav-container" id="nav-menu">
+    <div class="nav-header">
+        <h2>Menu</h2>     
+        <button class="btn" style="border: none; background: transparent; display: none;" onclick="document.getElementById('nav-menu').classList.remove('open')"><i class="fa-solid fa-xmark" hidden></i></button>
+    </div>
+    <div class="nav-links">
+        <a href="#" onclick="switchPage('profile')"><i class="fa-solid fa-user fa-fw"></i> <span>Profile</span></a>
+        <a href="#" onclick="openRepos()"><i class="fa-solid fa-database fa-fw"></i> <span>Repositories</span></a>
+        <a href="#" onclick="openSecurity()"><i class="fa-solid fa-key fa-fw"></i> <span>Security</span></a>
+        <a href="#" onclick="switchPage('newrepo')"><i class="fa-solid fa-square-plus fa-fw"></i> <span>New Repository</span></a>
+        <a href="#" onclick="switchPage('moreToolsPage')"><i class="fa-solid fa-toolbox fa-fw"></i> <span>Other Tools</span></a>
+        <a href="#" onclick="switchPage('documentationPage')"><i class="fa-solid fa-book fa-fw"></i> <span>Documentation</span></a>
+        
+        <a href="#" id="themeToggleLink" onclick="toggleTheme(event)">
+            <i class="fas fa-solid fa-moon fa-fw"></i> Theme
+            <span id="themeToggleButton" style="color: var(--repo-name-color); font-weight: bold;">Light</span>
+        </a>
+    </div>
+</div>
+    
+    
+    <!-- Security (Authentication) Page -->
+<div id="security"  class="page controls active">
+   <div id="accountSetting">
+<h2>Account Settings </h2>
+       <label for="usernameInput">Github Username :</label>
+        <input type="text" id="usernameInput" placeholder="iciiwhite" ><br>
+        <label for="patInput">Personal Access Token :</label>
+        <input type="password" id="patInput" placeholder="github_pat_1........." size="50">
+        <div id="status"></div>
+        <button id="loadAccountButton" class="action-button"><i class="fa-solid fa-sign-in"></i> Load Account</button>
+        
+        <p style="margin-top: 20px;">
+            <a href="#" style="text-decoration: none; color: yellowgreen; font-weight: 900;" onclick="showPatInstructions()"><i class="fa-solid fa-circle-question fa-fw"></i> How to get a Personal Access Token (PAT)</a>
+        </p>
+   </div>
+</div>
+
+<!-- New Repo Page -->
+<div id="newrepo" class="page controls">
+    <h2><i class="fa-solid fa-square-plus fa-fw"></i> Create New Repository</h2>
+    <label for="repoName">Repository Name:</label>
+    <input type="text" id="repoName" placeholder="my-new-repo" required>
+    <label for="repoDescription">Description (Optional):</label>
+    <textarea id="repoDescription" placeholder="A brief description..."></textarea><br>
+    <label style="display: block; margin-top: 10px;">
+        <input type="checkbox" id="isPrivate"> Is Private?
+    </label>
+    <button id="createButton" class="action-button"><i class="fa-solid fa-layer-plus"></i> Create Repository</button>
+</div>
+
+
+<!-- Repository List Area -->
+<div id="repositories" class="page controls">
+    <h2><i class="fa-solid fa-database fa-fw"></i> Your Repositories</h2>
+    <ul id="repositoryList" class="repo-list">
+        <li>No Repositories fetched yet.</li>
+    </ul>
+     <button id="refreshListButton" class="action-button"><i class="fa-solid fa-refresh"></i> Refresh List</button>
+    <button onclick="switchPage('newrepo')" class="btn"><i class="fa-solid fa-square-plus"></i> New Repository</button>
+</div>
+
+
+<!-- The profile page -->
+<div id="profile" class="page controls">
+   <div id="profileDetails">
+       <h2><i class="fa-solid fa-user fa-fw"></i> My Profile</h2>
+       <div id="profile">
+           <img  class="profile-picture" id="profilePicture" src="profile.ico" alt="Profile Picture">
+           <p id="profileUsername">@username</p>
+       </div>
+       <button class="btn" onclick="openSecurity()"><i class="fa-solid fa-right-left"></i> Switch Accounts</button><br>
+       <p style="text-align: left;">
+The content here is not a simulation. Every activity done at this site is up-to-date with the Github account. Any actions like deletion of repositories, or editing of files cannot be undone and changes are made at the Github site too. Read the <a href="docs.html#myGit" class="repo-link">Documentation</a> for more details.
+       </p>
+   </div>
+</div>
+
+<!-- An Opened Repository -->
+<div id="repository" class="page controls">
+    <h2 id="repositoryNameDisplay">Repo Name</h2>
+    <p id="RepositoryDescriptionDisplay">Description</p>
+    
+    <!-- GitHub Pages Section -->
+    <div id="pagesWrapper" class="controls">
+        <div class="file-controls">
+            <span style="font-weight: bold;"><i class="fa-solid fa-globe fa-fw"></i> GitHub Pages</span>
+            <div id="pagesActionButtons">
+                <!-- Buttons will be injected here -->
+            </div>
+        </div>
+        <div id="pagesStatus">Checking deployment status...</div>
+    </div>
+
+
+    <div class="controls">
+         <div class="file-controls">
+            <div>
+                 <button class="action-button" onclick="openFileEditor(true, currentPath + '/new-file.txt')"><i class="fas fa-plus"></i> New</button>
+                 <button class="action-button" onclick="openUploadPage()"><i class="fa-solid fa-upload"></i> Upload</button>
+<p>:<span id="currentPathDisplay"></span>
+</p>
+
+            </div>
+        </div>
+        
+        <div id="file-list">
+            <!-- Files will be injected here -->
+            <div class="file-item">Select a repository to view contents.</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Dedicated Upload Page -->
+<div id="uploadPage" class="page controls">
+    <h2 id="uploadPageTitle"><i class="fa-solid fa-upload fa-fw"></i> Upload Files to <span id="uploadRepoName"></span></h2>
+    <input type="file" id="multiFileUploadInput" multiple onchange="displayFilesToUpload(this.files)" style="width: 100%;"><br>
+    
+    <div style="margin-top: 15px;">
+        <label for="uploadCommitMessage">Commit Message:</label>
+        <input type="text" id="uploadCommitMessage" placeholder="feat: batch upload of new files" style="width: 95%;">
+    </div><br>
+    
+    <ul id="file-upload-list">
+        <!-- Selected files will be listed here -->
+    </ul>
+    
+    <button id="commitUploadsButton" class="action-button" disabled><i class="fa-solid fa-check"></i> Commit Uploads</button>
+    <button class="btn" id="cancelUploadButton"><i class="fa-solid fa-xmark"></i> Cancel</button>
+
+</div>
+
+
+<!-- File Editor Page -->
+<div id="fileEditor" class="page controls">
+    <h2 id="editorTitle"></h2>
+    <label for="editorFileName">File Path:</label>
+    <input type="text" id="editorFileName" placeholder="path/to/my/file.txt"><br>
+
+    <label for="editorContent">File Content:</label>
+    <textarea id="editorContent" rows="20"></textarea><br>
+    
+    <label for="editorCommitMessage">Commit Message:</label>
+    <input type="text" id="editorCommitMessage" placeholder="Initial commit"><br>
+
+    <input type="hidden" id="editorFileSha">
+    
+    <button id="saveFileButton" class="action-button"><i class="fa-solid fa-save"></i> Commit Changes</button>
+    <button onclick="openRepository(currentRepo, currentRepoDesc, currentBranch)" class="btn"><i class="fa-solid fa-xmark"></i> Cancel</button>
+</div>
+
+<!-- Image Viewer/Binary Warning Page -->
+<div id="imageViewer" class="page controls">
+    <h2 id="imageViewerTitle"></h2>
+    <div id="imageViewerContent" style="text-align: center;">
+        <!-- Image/Warning will be displayed here -->
+    </div>
+    <button onclick="openRepository(currentRepo, currentRepoDesc, currentBranch)" class="btn"><i class="fa-solid fa-chevron-left"></i> Back to Repository</button>
+</div>
+
+<!-- More Tools Page -->
+<div id="moreToolsPage" class="page controls">
+    <h2><i class="fa-solid fa-toolbox fa-fw"></i> More Tools</h2>
+    <p>Discover more flaming tools by Icii White</p>
+    <button onclick="location.href='../index.html'">Open Toolbox </button>
+</div>
+
+<!-- Documentation Page -->
+<div id="documentationPage" class="page controls">
+    <h2><i class="fa-solid fa-book fa-fw"></i> Documentation</h2>
+    <p>The documentation for myGit, including detailed instructions on setting up your Personal Access Token, feature explanations, and troubleshooting guides.</p>
+    <p>Please refer to <a href="docs.html" target="_blank" class="repo-link">docs.html</a> for full documentation.</p>
+</div>
+
+
+<script>
+    // --- DOM Elements ---
+    const patInput = document.getElementById('patInput');
+    const usernameInput = document.getElementById('usernameInput');
+    const loadAccountButton = document.getElementById('loadAccountButton');
+    const repositoryList = document.getElementById('repositoryList');
+    const statusDiv = document.getElementById('status');
+    const pagesStatusDiv = document.getElementById('pagesStatus');
+    const pagesActionButtonsDiv = document.getElementById('pagesActionButtons');
+    const themeToggleButton = document.getElementById('themeToggleButton');
+    const currentPathDisplay = document.getElementById('currentPathDisplay');
+    const editorFileNameInput = document.getElementById('editorFileName');
+    const editorContentTextarea = document.getElementById('editorContent');
+    const commitUploadsButton = document.getElementById('commitUploadsButton');
+    const multiFileUploadInput = document.getElementById('multiFileUploadInput');
+    const fileUploadList = document.getElementById('file-upload-list');
+    const navMenu = document.getElementById('nav-menu');
+    const mainContent = document.body; // Using body as the main swipe target
+
+    
+    // --- Global State Variables ---
+    let currentOwner = '';
+    let currentRepo = null; 
+    let currentRepoDesc = null;
+    let currentPath = ''; 
+    let editorMode = 'new';
+    let currentBranch = 'main'; 
+    let filesToUpload = null; // Stores the FileList object
+    
+    // Swipe state variables
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    // Extensions we *can* edit (i.e., text files)
+    const editableExtensions = /\.(txt|md|markdown|json|js|ts|jsx|tsx|html|css|py|yaml|yml|sh|bash|c|cpp|h|java|go|php|rb|svg|xml)$/i;
+
+    // --- Local Storage Keys ---
+    const PAT_KEY = 'myGit_pat';
+    const THEME_KEY = 'myGit_theme';
+
+    // --- Utility Functions ---
+
+    function showMessage(message, type) {
+        // Create a temporary message element in the status div for persistence
+        const msg = document.createElement('p');
+        msg.className = type;
+        msg.textContent = message;
+        statusDiv.prepend(msg);
+        
+        // Only keep the last 3 status messages
+        while (statusDiv.children.length > 3) {
+            statusDiv.removeChild(statusDiv.lastChild);
+        }
+
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+            if (statusDiv.contains(msg)) { statusDiv.removeChild(msg); }
+        }, 8000); 
+    }
+
+    function showPatInstructions() {
+        alert("To generate a Personal Access Token (PAT):\n\n1. Go to your GitHub Settings.\n2. Navigate to Developer Settings > Personal access tokens > Tokens (classic).\n3. Click 'Generate new token (classic)'.\n4. Give it a descriptive name (e.g., 'myGit Tool').\n5. Crucially, grant the following scopes:\n   - 'repo' (Full control of private repositories)\n   - 'workflow' (Push access to workflows)\n6. Click 'Generate token' and copy the resulting string. It will only be shown once.");
+    }
+    
+    function switchPage(pageId) {
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        const page = document.getElementById(pageId);
+        if (page) {
+            page.classList.add('active');
+            window.scrollTo(0, 0); 
+        }
+        document.getElementById('nav-menu') .classList.remove('open');
+    }
+
+    function openRepos() {
+        if (patInput.value.trim()) {
+            fetchRepositories(); 
+            switchPage('repositories');
+        } else {
+            showMessage('Please load your account first.', 'error');
+            switchPage('security');
+        }
+    }
+
+    function openSecurity() {
+        switchPage('security');
+    }
+    
+    // --- Theme Toggling (Modified for true B/W inversion) ---
+    function loadTheme() {
+        const savedTheme = localStorage.getItem(THEME_KEY);
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggleButton.textContent = 'Dark';
+        } else {
+            document.body.classList.remove('dark-theme');
+            themeToggleButton.textContent = 'Light';
+        }
+    }
+    
+    function toggleTheme(event) {
+        if (event) event.preventDefault(); 
+        
+        const isDark = document.body.classList.toggle('dark-theme');
+        
+        if (isDark) {
+            localStorage.setItem(THEME_KEY, 'dark');
+            themeToggleButton.textContent = 'Dark';
+        } else {
+            localStorage.setItem(THEME_KEY, 'light');
+            themeToggleButton.textContent = 'Light';
+        }
+    }
+
+    // --- Swipe Functionality Re-Corrected ---
+    
+    function handleTouchStart(event) {
+        touchstartX = event.changedTouches[0].screenX;
+    }
+
+    function handleTouchEnd(event) {
+        touchendX = event.changedTouches[0].screenX;
+        const swipeDistance = Math.abs(touchendX - touchstartX);
+        const minSwipeDistance = 50; 
+        
+        if (swipeDistance < minSwipeDistance) return;
+
+        const isMenuOpen = navMenu.classList.contains('open');
+
+        // Right-to-Left swipe (touchendX < touchstartX)
+        if (touchendX < touchstartX) {
+            // Check if swipe started near the right edge to Open the menu
+            // Start within 70px from the right edge
+            if (!isMenuOpen && touchstartX > window.innerWidth - 70) {
+                 navMenu.classList.add('open');
+            }
+        } 
+        // Left-to-Right swipe (touchendX > touchstartX)
+        else { 
+            // Check if menu is open and swipe drags it back to Close
+            if (isMenuOpen) {
+                navMenu.classList.remove('open');
+            }
+        }
+    }
+
+    mainContent.addEventListener('touchstart', handleTouchStart, false);
+    mainContent.addEventListener('touchend', handleTouchEnd, false);
+    
+    // --- Core API Helper (NO CHANGE) ---
+
+    async function githubApiCall(url, method = 'GET', data = null, customAccept = 'application/vnd.github.v3+json') {
+        const pat = patInput.value.trim();
+        if (!pat) { throw new Error('Personal Access Token is missing.'); }
+
+        const headers = {
+            'Authorization': `token ${pat}`,
+            'Accept': customAccept
+        };
+
+        const config = {
+            method: method,
+            headers: headers,
+        };
+
+        if (data && method !== 'GET') {
+            config.body = JSON.stringify(data);
+             config.headers['Content-Type'] = 'application/json';
+        }
+        
+        try {
+            const response = await fetch(url, config);
+            
+            if (!response.ok) {
+                let errorMessage = response.statusText || 'Unknown Error';
+                try {
+                    const errorBody = await response.json();
+                    if (response.status === 404 && errorBody.message === 'Not Found') return null;
+                    errorMessage = errorBody.message || errorMessage;
+                } catch (e) { /* ignore non-JSON error body */ }
+                throw new Error(`GitHub API Error (${response.status}): ${errorMessage}`);
+            }
+
+            if (method === 'DELETE' || response.status === 204) {
+                 return {}; // Indicate success for DELETE/No Content
+            }
+            
+            // Handle binary content (blob) response
+            if (customAccept === 'application/vnd.github.v3.raw') {
+                return await response.text();
+            }
+               
+            // Handle JSON response
+            return await response.json();
+
+        } catch (error) {
+            console.error('API Call Error:', error);
+            throw error; // Re-throw the error for the calling function to handle
+        }
+    }
+
+
+    // --- Account and UI Handlers (NO CHANGE) ---
+
+    function loadPatFromStorage() {
+        const savedPat = localStorage.getItem(PAT_KEY);
+        const savedUsername = localStorage.getItem('myGit_username');
+        
+        if (savedPat) {
+            patInput.value = savedPat;
+            showMessage('PAT found. Loading account...', 'info');
+            loadAccount(savedUsername);
+        } else if (savedUsername) {
+            usernameInput.value = savedUsername; 
+        }
+        loadTheme(); 
+    }
+
+    async function loadAccount(initialUsername = '') {
+        const tempPat = patInput.value.trim();
+        if (!tempPat) { showMessage('Please enter your Personal Access Token.', 'error'); return; }
+        
+        loadAccountButton.disabled = true;
+
+        try {
+            const userUrl = `https://api.github.com/user`;
+            const userData = await githubApiCall(userUrl);
+
+            // PAT is valid. The `userData.login` is the definitive username.
+            const userLogin = userData.login;
+            
+            localStorage.setItem(PAT_KEY, tempPat); 
+            localStorage.setItem('myGit_username', userLogin);
+            
+            document.getElementById('profilePicture').src = userData.avatar_url;
+            document.getElementById('profileUsername').textContent = `@${userLogin}`;
+            currentOwner = userLogin;
+            usernameInput.value = userLogin;
+            usernameInput.disabled = true;
+
+            showMessage(`Successfully loaded account for @${currentOwner}.`, 'success');
+            switchPage('profile');
+            fetchRepositories(); 
+        } catch (error) {
+            showMessage(`Login Error: ${error.message}`, 'error');
+            localStorage.removeItem(PAT_KEY); 
+            patInput.value = '';
+            usernameInput.disabled = false;
+            currentOwner = '';
+        } finally {
+            loadAccountButton.disabled = false;
+        }
+    }
+
+    // --- Repository Operations (SIMPLIFIED/PLACEHOLDER) ---
+    // NOTE: The full implementation of these functions is assumed to be in a complete, working version.
+    // They are provided here with simple logic for the purpose of demonstrating the UI/UX.
+
+     async function fetchRepositories() {
+         repositoryList.innerHTML = '<li><i class="fa-solid fa-spinner fa-spin"></i> Fetching repositories...</li>';
+         try {
+             const repos = await githubApiCall(`https://api.github.com/users/${currentOwner}/repos`);
+             repositoryList.innerHTML = ''; 
+             if (!repos || repos.length === 0) {
+                 repositoryList.innerHTML = '<li>No repositories found.</li>';
+                 return;
+             }
+             repos.forEach(repo => {
+                 const li = document.createElement('li');
+                 li.className = 'repo-item';
+                 li.innerHTML = `
+                     <span class="repo-name" onclick="openRepository('${repo.name}', '${repo.description || ''}', '${repo.default_branch}')">${repo.name}</span>
+                     ${repo.private ? '<span class="private"><i class="fa-solid fa-lock"></i> (Private)</span>' : ''}
+                     <p>${repo.description || 'No description'}</p>
+                     <button class="delete-button" data-repo-name="${repo.name}"><i class="fa-solid fa-trash"></i> Delete</button>
+                 `;
+                 repositoryList.appendChild(li);
+             });
+             showMessage(`Successfully loaded ${repos.length} repositories.`, 'info');
+
+         } catch (error) {
+             repositoryList.innerHTML = `<li><i class="fa-solid fa-triangle-exclamation"></i> Error loading repositories. Check your PAT scopes.</li>`;
+             showMessage(`Error fetching repositories: ${error.message}`, 'error');
+         }
+     }
+     
+     async function createRepository() {
+         const repoName = document.getElementById('repoName').value.trim();
+         const repoDescription = document.getElementById('repoDescription').value.trim();
+         const isPrivate = document.getElementById('isPrivate').checked;
+         
+         if (!repoName) { showMessage('Repository name is required.', 'error'); return; }
+         
+         const createButton = document.getElementById('createButton');
+         createButton.disabled = true;
+         
+         const url = `https://api.github.com/user/repos`;
+         const data = {
+             name: repoName,
+             description: repoDescription,
+             private: isPrivate,
+             auto_init: false // We will handle files later
+         };
+
+         try {
+             const newRepo = await githubApiCall(url, 'POST', data);
+             showMessage(`Repository ${newRepo.name} created successfully!`, 'success');
+             document.getElementById('repoName').value = '';
+             document.getElementById('repoDescription').value = '';
+             document.getElementById('isPrivate').checked = false;
+             openRepository(newRepo.name, newRepo.description, newRepo.default_branch); // Open the new repo page
+         } catch (error) {
+             showMessage(`Failed to create repository: ${error.message}`, 'error');
+         } finally {
+             createButton.disabled = false;
+         }
+     }
+     
+     async function deleteRepository(repoButton) {
+         const repoName = repoButton.dataset.repoName;
+         if (!confirm(`Are you absolutely sure you want to delete the repository "${repoName}"? This action cannot be undone.`)) { return; }
+
+         repoButton.disabled = true;
+
+         const url = `https://api.github.com/repos/${currentOwner}/${repoName}`;
+
+         try {
+             await githubApiCall(url, 'DELETE');
+             showMessage(`Repository ${repoName} deleted permanently.`, 'success');
+             fetchRepositories(); 
+         } catch (error) {
+             showMessage(`Failed to delete repository: ${error.message}`, 'error');
+             repoButton.disabled = false;
+         }
+     }
+    
+    function openRepository(repoName, description, branch = 'main') {
+        currentRepo = repoName;
+        currentRepoDesc = description;
+        currentPath = ''; 
+        currentBranch = branch;
+
+        document.getElementById('repositoryNameDisplay').textContent = repoName;
+        document.getElementById('RepositoryDescriptionDisplay').textContent = description || 'No description provided.';
+        currentPathDisplay.textContent = currentPath;
+        
+        switchPage('repository');
+        fetchPagesStatus(repoName);
+        fetchRepoContents(repoName, currentBranch, currentPath);
+    }
+    
+    async function fetchRepoContents(repoName, branch, path) {
+        const filesUrl = `https://api.github.com/repos/${currentOwner}/${repoName}/contents${path ? '/' + path : ''}?ref=${branch}`;
+        const fileListDiv = document.getElementById('file-list');
+        const originalPath = path;
+        fileListDiv.innerHTML = `<div class="file-item"><i class="fa-solid fa-spinner fa-spin"></i> Loading files from /${originalPath}...</div>`;
+        currentPathDisplay.textContent = originalPath;
+        currentPath = originalPath;
+
+        try {
+            const files = await githubApiCall(filesUrl);
+            fileListDiv.innerHTML = '';
+            
+            // Back/Up folder control
+            if (currentPath) {
+                let parentPath = '';
+                const lastSlashIndex = currentPath.lastIndexOf('/');
+                if (lastSlashIndex !== -1) { parentPath = currentPath.substring(0, lastSlashIndex); }
+                
+                const backItem = document.createElement('div');
+                backItem.className = 'file-item';
+                backItem.style.fontWeight = 'bold';
+                backItem.innerHTML = `<span><i class="fa-solid fa-arrow-up-long fa-fw"></i> ..</span>`; 
+                backItem.onclick = () => fetchRepoContents(repoName, branch, parentPath);
+                fileListDiv.appendChild(backItem);
+            }
+
+            if (files && Array.isArray(files)) {
+                files.sort((a, b) => {
+                    if (a.type === 'dir' && b.type === 'file') return -1;
+                    if (a.type === 'file' && b.type === 'dir') return 1;
+                    return a.path.localeCompare(b.path);
+                });
+                
+                const imageFilePattern = /\.(png|jpe?g|gif|webp|bmp|ico)$/i; 
+                const binaryFilePattern = imageFilePattern;
+
+                files.forEach(file => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    let iconHtml;
+                    
+                    if (file.type === 'dir') {
+                        iconHtml = `<i class="fa-solid fa-folder fa-fw"></i>`; 
+                        fileItem.onclick = () => fetchRepoContents(repoName, branch, file.path);
+                    } else { // File
+                        if (imageFilePattern.test(file.name)) {
+                            iconHtml = `<i class="fa-regular fa-image fa-fw"></i>`;
+                        } else if (file.name.match(/\.(md|markdown)$/i)) {
+                            iconHtml = `<i class="fa-solid fa-book-open fa-fw"></i>`; 
+                        } else if (file.name.match(/\.(js|ts|html|css|json|yaml|php|rb|py)$/i)) {
+                            iconHtml = `<i class="fa-solid fa-file-code fa-fw"></i>`; 
+                        } else {
+                            iconHtml = `<i class="fa-solid fa-file fa-fw"></i>`; 
+                        }
+                        
+                        const filePath = file.path.replace(/'/g, "\\'").replace(/`/g, "\\`");
+                        const fileSha = file.sha;
+                        
+                        // Check if it's a binary file AND not an SVG (since SVG is text)
+                        if (binaryFilePattern.test(file.name) && !file.name.endsWith('.svg')) {
+                            // Binary file (non-text). Don't open for text editing.
+                            fileItem.onclick = () => openImageViewer(file.download_url, file.path, true); 
+                        } else {
+                            // Text file or SVG which is text
+                            fileItem.onclick = () => editFile(filePath, fileSha);
+                        }
+                    }
+
+                    fileItem.innerHTML += `<span>${iconHtml} ${file.name}</span>`;
+                    fileListDiv.appendChild(fileItem);
+            });
+
+                if (files.length === 0 && !currentPath) {
+                     fileListDiv.innerHTML = `<div class="file-item">Repository is empty.</div>`;
+                }
+            } else if (fileListDiv.children.length === 0) {
+                 fileListDiv.innerHTML = `<div class="file-item"><i class="fa-solid fa-triangle-exclamation"></i> Could not load files. Check token permissions or if the path is valid.</div>`;
+            }
+        } catch (error) {
+            showMessage(`Error fetching contents: ${error.message}`, 'error');
+             fileListDiv.innerHTML = `<div class="file-item"><i class="fa-solid fa-triangle-exclamation"></i> Failed to load repository contents.</div>`;
+        }
+    }
+    
+    // --- File Editor and Viewer (NO CHANGE) ---
+    
+    function openImageViewer(fileUrl, fileName, isBinary = false) {
+        document.getElementById('imageViewerTitle').textContent = fileName;
+        
+        let contentHtml = '';
+        if (isBinary) {
+            // For binary files, just show the image if it's an image, or a warning
+            const imageExtensions = /\.(png|jpe?g|gif|webp|bmp|ico)$/i;
+            if (imageExtensions.test(fileName)) {
+                contentHtml = `<img src="${fileUrl}" alt="${fileName}" style="max-width: 100%; height: auto;">`;
+            } else {
+                 contentHtml = `<p class="error"><i class="fa-solid fa-triangle-exclamation"></i> File is a binary format and cannot be displayed or edited here. (Check your file extension: ${fileName})</p>`;
+            }
+           
+        } else {
+           contentHtml = `<p class="error"><i class="fa-solid fa-triangle-exclamation"></i> Encountered an unexpected binary file type. Please check the file extension.</p>`;
+        }
+        
+        document.getElementById('imageViewerContent').innerHTML = contentHtml;
+        switchPage('imageViewer');
+    }
+    
+    function editFile(filePath, fileSha) { openFileEditor(false, filePath, fileSha); }
+    
+    function openFileEditor(isNew, filePath, initialSha = '') {
+         // Check if it's a binary file (excluding SVGs) before opening editor
+        if (!isNew && !editableExtensions.test(filePath) && !filePath.endsWith('.svg')) {
+            showMessage(`Error: ${filePath} is a binary file and cannot be edited as text.`, 'error');
+            return;
+        }
+        
+        editorMode = isNew || !initialSha ? 'new' : 'edit';
+        
+        document.getElementById('editorTitle').textContent = editorMode === 'new' ? 
+            `Create File in ${currentRepo}` : 
+            `</> Editing ${filePath} in ${currentRepo}`;
+        
+        editorFileNameInput.value = filePath;
+        document.getElementById('editorFileSha').value = initialSha; 
+        document.getElementById('editorCommitMessage').value = editorMode === 'new' ? 
+            `feat: add ${filePath}` : 
+            `fix: update ${filePath}`;
+        
+        editorFileNameInput.disabled = editorMode !== 'new'; 
+
+        if (editorMode === 'edit') {
+            editorContentTextarea.value = 'Fetching file content...'; 
+            fetchFileContent(filePath);
+        } else {
+             editorContentTextarea.value = ''; 
+        }
+        
+        document.getElementById('saveFileButton').innerHTML = '<i class="fa-solid fa-save"></i> Commit Changes';
+        document.getElementById('saveFileButton').disabled = false;
+
+        switchPage('fileEditor');
+    }
+    
+    async function fetchFileContent(filePath) {
+        // Fetch raw content
+        const fileUrl = `https://api.github.com/repos/${currentOwner}/${currentRepo}/contents/${filePath}?ref=${currentBranch}`;
+        
+        try {
+            const fileData = await githubApiCall(fileUrl);
+        
+            if (fileData && fileData.content) {
+                // GitHub content is Base64 encoded.
+                const decodedContent = atob(fileData.content);
+                // Handle potential multi-byte characters
+                const utf8Content = decodeURIComponent(escape(decodedContent)); 
+                
+                editorContentTextarea.value = utf8Content;
+                document.getElementById('editorFileSha').value = fileData.sha;
+                document.getElementById('saveFileButton').disabled = false;
+            } else {
+                editorContentTextarea.value = `<i class="fa-solid fa-triangle-exclamation"></i> Failed to load file content for ${filePath}.`;
+                document.getElementById('saveFileButton').disabled = true;
+            }
+        } catch (error) {
+             showMessage(`Error fetching file: ${error.message}`, 'error');
+             editorContentTextarea.value = `<i class="fa-solid fa-triangle-exclamation"></i> Failed to load file content.`;
+             document.getElementById('saveFileButton').disabled = true;
+        }
+    }
+    
+    async function saveFile() {
+        const filePath = editorFileNameInput.value.trim();
+        const fileContent = editorContentTextarea.value;
+        const commitMessage = document.getElementById('editorCommitMessage').value.trim();
+        let fileSha = document.getElementById('editorFileSha').value; 
+
+        if (editorMode === 'new' && fileSha === '') { fileSha = undefined; } // Ensure empty SHA is treated as new file commit
+
+        if (!filePath || !commitMessage || !currentRepo) { showMessage('Missing data.', 'error'); return; }
+        
+        document.getElementById('saveFileButton').disabled = true;
+
+        try {
+            // Encode content to Base64
+            const utf8Content = unescape(encodeURIComponent(fileContent));
+            const encodedContent = btoa(utf8Content);
+            
+            const url = `https://api.github.com/repos/${currentOwner}/${currentRepo}/contents/${filePath}`;
+            
+            const data = {
+                message: commitMessage,
+                content: encodedContent,
+                branch: currentBranch,
+                sha: fileSha 
+            };
+            
+            const result = await githubApiCall(url, 'PUT', data); 
+            
+            if (result) {
+                 showMessage(`${editorMode === 'new' ? 'Created' : 'Updated'}: ${filePath} successfuly committed!`, 'success');
+                 openRepository(currentRepo, currentRepoDesc, currentBranch); 
+            } else {
+                 showMessage(`<i class="fa-solid fa-triangle-exclamation"></i> Commit failed: No result received.`, 'error');
+            }
+        } catch(e) {
+            showMessage(`Commit failed for ${filePath}: ${e.message}`, 'error');
+        } finally {
+            document.getElementById('saveFileButton').disabled = false;
+        }
+    }
+
+    // --- Batch File Upload Functionality (NO CHANGE) ---
+
+    function openUploadPage() {
+        if (!currentRepo) { showMessage('Please select a repository first.', 'error'); return; }
+        document.getElementById('uploadRepoName').textContent = currentRepo;
+        multiFileUploadInput.value = ''; // Reset the file input
+        fileUploadList.innerHTML = '<li>Select one or more files to upload.</li>';
+        commitUploadsButton.disabled = true;
+        document.getElementById('uploadCommitMessage').value = `feat: batch upload to ${currentPath || 'root'}`;
+        filesToUpload = null;
+        
+        switchPage('uploadPage');
+    }
+
+    function displayFilesToUpload(fileList) {
+        filesToUpload = fileList;
+        fileUploadList.innerHTML = '';
+        
+        if (fileList.length === 0) {
+            fileUploadList.innerHTML = '<li>No files selected.</li>';
+            commitUploadsButton.disabled = true;
+            return;
+        }
+
+        for (let i = 0; i < fileList.length; i++) {
+            const file = fileList[i];
+            const li = document.createElement('li');
+            li.className = 'upload-file-item';
+            li.innerHTML = `<span><i class="fa-solid fa-file fa-fw"></i> ${file.name} (${(file.size / 1024).toFixed(2)} KB)</span>`;
+            fileUploadList.appendChild(li);
+        }
+        commitUploadsButton.disabled = false;
+    }
+
+    function readAndUploadFile(file, commitMessage) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = async function (e) {
+                const base64Content = e.target.result.split(',')[1];
+                const filePath = currentPath ? `${currentPath}/${file.name}` : file.name;
+                
+                try {
+                    const url = `https://api.github.com/repos/${currentOwner}/${currentRepo}/contents/${filePath}`;
+                    
+                    const data = {
+                        message: commitMessage,
+                        content: base64Content,
+                        branch: currentBranch,
+                    };
+
+                    await githubApiCall(url, 'PUT', data);
+                    resolve({ file: file.name, success: true });
+                } catch(error) {
+                    resolve({ file: file.name, success: false, message: error.message });
+                }
+            };
+
+            reader.onerror = function(e) {
+                reject({ file: file.name, success: false, message: `Read Error: ${e.target.error.name}` });
+            };
+            
+            // Read as data URL to get Base64.
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async function commitUploads() {
+        if (!filesToUpload || filesToUpload.length === 0) {
+            showMessage('No files selected for upload.', 'error');
+            return;
+        }
+
+        const commitMessage = document.getElementById('uploadCommitMessage').value.trim() || 'feat: batch upload';
+        commitUploadsButton.disabled = true;
+        commitUploadsButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Uploading...';
+        
+        const uploadPromises = [];
+        for (let i = 0; i < filesToUpload.length; i++) {
+            uploadPromises.push(readAndUploadFile(filesToUpload[i], commitMessage));
+        }
+
+        const results = await Promise.all(uploadPromises);
+
+        let successCount = 0;
+        let failureMessages = [];
+
+        results.forEach(result => {
+            if (result.success) {
+                successCount++;
+            } else {
+                failureMessages.push(`Failed to upload ${result.file}: ${result.message}`);
+            }
+        });
+
+        if (successCount > 0) {
+            showMessage(`Successfully uploaded ${successCount} of ${results.length} files.`, 'success');
+        }
+        failureMessages.forEach(msg => showMessage(msg, 'error'));
+
+
+        commitUploadsButton.disabled = false;
+        commitUploadsButton.innerHTML = '<i class="fa-solid fa-check"></i> Commit Uploads';
+
+        // Go back to the repository view and refresh
+        openRepository(currentRepo, currentRepoDesc, currentBranch); 
+    }
+
+
+    // --- GitHub Pages Management ---
+
+    async function fetchPagesStatus(repoName) {
+        pagesStatusDiv.innerHTML = 'Checking Pages status...';
+        pagesActionButtonsDiv.innerHTML = '';
+        const pagesUrl = `https://api.github.com/repos/${currentOwner}/${repoName}/pages`;
+        const actionButtonClass = 'action-button';
+
+        const pagesData = await githubApiCall(pagesUrl);
+
+        if (pagesData && pagesData.status && pagesData.status !== 'null' && pagesData.status !== 'disabled') {
+            const deployUrl = pagesData.html_url;
+            pagesStatusDiv.innerHTML = `Status: <b>${pagesData.status.toUpperCase()}</b><br>Your site is live at <span style="text-decoration: none; color: yellowgreen; font-weight: 900; word-wrap: break-word; overflow-wrap: break-word; white-space: normal; display: inline;" onclick="location.href='${deployUrl}'" target="_blank">${deployUrl}</span>`;
+            pagesActionButtonsDiv.innerHTML = `<button class="delete-button" onclick="deletePagesDeployment('${repoName}')">Disable Pages</button>`;
+        } else {
+            pagesStatusDiv.innerHTML = `Status: NOT DEPLOYED.`;
+            pagesActionButtonsDiv.innerHTML = `<button class="${actionButtonClass}" onclick="createPagesDeployment('${repoName}', '${currentBranch}')">Enable Pages (Branch: ${currentBranch})</button>`;
+        }
+    }
+
+    async function createPagesDeployment(repoName, branch) {
+        if (!confirm(`Deploy GitHub Pages for ${repoName} from branch "${branch}"? This requires an 'index.html' or similar file in the root of the branch.`)) {
+            return;
+        }
+        
+        // Endpoint for Pages creation
+        const url = `https://api.github.com/repos/${currentOwner}/${repoName}/pages`;
+        
+        pagesActionButtonsDiv.querySelector('button').disabled = true;
+
+        const data = {
+            source: {
+                branch: branch,
+                path: '/' // Deploy from the root of the branch
+            }
+        };
+
+        const result = await githubApiCall(url, 'POST', data, `Pages deployment initiated for ${repoName} from branch ${branch}!`);
+        
+        pagesActionButtonsDiv.querySelector('button').disabled = false;
+        if (result) {
+            // Give GitHub time to process the deployment
+            setTimeout(() => fetchPagesStatus(repoName), 3000); 
+        }
+    }
+
+    async function deletePagesDeployment(repoName) {
+        if (!confirm(`Are you sure you want to DISABLE GitHub Pages for ${repoName}?`)) {
+            return;
+        }
+
+        const url = `https://api.github.com/repos/${currentOwner}/${repoName}/pages`;
+        
+        pagesActionButtonsDiv.querySelector('button').disabled = true;
+
+        const result = await githubApiCall(url, 'DELETE', true, `Pages deployment disabled for ${repoName}.`);
+        
+        pagesActionButtonsDiv.querySelector('button').disabled = false;
+        if (result !== null) {
+            fetchPagesStatus(repoName);
+        }
+    }
+
+    // --- Initialization and Events ---
+    
+    loadAccountButton.addEventListener('click', () => loadAccount());
+
+    // New/Updated Event listeners
+    document.getElementById('refreshListButton').addEventListener('click', fetchRepositories);
+    document.getElementById('createButton').addEventListener('click', createRepository);
+    document.getElementById('saveFileButton').addEventListener('click', saveFile);
+    commitUploadsButton.addEventListener('click', commitUploads);
+    document.getElementById('cancelUploadButton').addEventListener('click', () => openRepository(currentRepo, currentRepoDesc, currentBranch));
+    // Added bolding for links
+    document.querySelectorAll('.repo-link').forEach(link => link.style.fontWeight = 'bold');
+
+
+    repositoryList.addEventListener('click', (event) => {
+        if (event.target.classList.contains('delete-button')) {
+             deleteRepository(event.target);
+        }
+    });
+
+
+    // --- FINAL INIT ---
+    loadPatFromStorage(); 
+    if (!patInput.value.trim()) {
+        switchPage('security');
+    }
+</script>
+</body>
+</html>
