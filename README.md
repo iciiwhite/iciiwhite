@@ -58,10 +58,6 @@ I'm a passionate backend developer from Uganda, leading **Golden Apple Technolog
 
 <div align="center">
 
-![Icii White's GitHub Stats](https://github-readme-stats.vercel.app/api?username=iciiwhite&show_icons=true&theme=radical&hide_border=true&include_all_commits=true&count_private=true)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=iciiwhite&layout=compact&theme=radical&hide_border=true&langs_count=8)
-
 ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=iciiwhite&theme=radical&hide_border=true)
 
 ![GitHub Trophies](https://github-profile-trophy.vercel.app/?username=iciiwhite&theme=radical&no-frame=true&row=2&column=4)
@@ -116,7 +112,7 @@ function reachOut(channel) {
 
 "Code that scales, solutions that matter."
 
-https://komarev.com/ghpvc/?username=iciiwhite&color=blue&style=flat-square
+![](https://komarev.com/ghpvc/?username=iciiwhite&color=blue&style=flat-square)
 
 From Uganda to the World <i class="fas fa-globe"></i>
 
@@ -124,13 +120,13 @@ From Uganda to the World <i class="fas fa-globe"></i>
 
 ---
 
-Last Updated: ${new Date().toLocaleDateString('en-US', { 
+Last Updated: <script>${new Date().toLocaleDateString('en-US', { 
 weekday: 'long', 
 year: 'numeric', 
 month: 'long', 
 day: 'numeric' 
 })}
-
+</script>
 <div align="right">
 
 Made with <i class="fas fa-heart"></i> by Icii White
