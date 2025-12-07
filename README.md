@@ -1,33 +1,155 @@
-# Hi there, I'm Icii White! 
+Hi there, I'm Icii White!
 
-![o](profile%206.png)
-### About Me
+<div align="center">
 
-I'm a Icii White , CEO [Golden Apple Technologies](#), "passionate backend developer" from Uganda.
+profile%206.png
 
-- I’m currently working on **Developing an online cloud storage, best WhatsApp bot and Making Software Development a hobby to all**
-- I’m looking for help with **Backend Development**
-- Ask me about **Golden Apple Technologies**
-- How to reach me: [goldenapplecoders@gmail.com](mailto:goldenapplecoders@gmail.com)
+<i class="fas fa-briefcase"></i> CEO & Backend Developer at Golden Apple Technologies
 
-### Tech Stack
+</div>
 
-<!-- You can use shields.io for cool badges -->
-**Languages and Tools:**
+<i class="fas fa-rocket"></i> About Me
 
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Git](https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white)
-![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+I'm a passionate backend developer from Uganda, leading Golden Apple Technologies. My mission is to make software development accessible and enjoyable for everyone while building innovative solutions that solve real-world problems.
 
-<!-- Add more as needed -->
+Currently working on:
 
-### GitHub Stats
+· <i class="fas fa-lock"></i> Secure Cloud Storage Platform - Enterprise-grade online storage solution
+· <i class="fas fa-robot"></i> WhatsApp Business Automation - Advanced chatbot platform for businesses
+· <i class="fas fa-graduation-cap"></i> Dev Education Platform - Making software development a hobby for all
 
-<!-- These are just examples using an external service -->
-![Icii White's GitHub Stats](https://github-readme-stats.vercel.app/api?username=iciiwhite&show_icons=true&theme=radical)
+Looking to collaborate on:
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=iciiwhite&layout=compact&theme=radical)
+· Backend architecture and microservices
+· Scalable cloud infrastructure
+· Open-source developer tools
+
+<i class="fas fa-tools"></i> Tech Stack
+
+Programming Languages
+
+https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white
+https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
+https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
+
+Backend Technologies
+
+https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white
+https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white
+https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white
+https://img.shields.io/badge/REST_API-FF6C37?style=for-the-badge&logo=node.js&logoColor=white
+
+Databases & Storage
+
+https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white
+https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white
+https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white
+https://img.shields.io/badge/AWS_S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white
+
+DevOps & Cloud
+
+https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white
+https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white
+https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white
+https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black
+https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white
+
+Tools & Platforms
+
+https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white
+https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white
+https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white
+
+<i class="fas fa-chart-line"></i> GitHub Analytics
+
+<div align="center">
+
+https://github-readme-stats.vercel.app/api?username=iciiwhite&show_icons=true&theme=radical&hide_border=true&include_all_commits=true&count_private=true
+
+https://github-readme-stats.vercel.app/api/top-langs/?username=iciiwhite&layout=compact&theme=radical&hide_border=true&langs_count=8
+
+https://github-readme-streak-stats.herokuapp.com/?user=iciiwhite&theme=radical&hide_border=true
+
+https://github-profile-trophy.vercel.app/?username=iciiwhite&theme=radical&no-frame=true&row=2&column=4
+
+</div>
+
+<i class="fas fa-trophy"></i> Featured Projects
+
+Golden Apple Technologies
+
+Enterprise Solutions & Custom Software Development
+
+Leading a team that builds scalable backend systems and cloud infrastructure for businesses across Africa.
+
+WhatsApp Bot Platform
+
+Advanced Business Automation
+
+Multi-tenant WhatsApp bot platform supporting NLP, payments, and CRM integration.
+
+Cloud Storage Solution
+
+Secure & Scalable Storage
+
+End-to-end encrypted cloud storage with collaborative features and API-first architecture.
+
+<i class="fas fa-envelope"></i> Connect With Me
+
+<div align="center">
+
+https://img.shields.io/badge/Email-goldenapplecoders@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white
+https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white
+https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
+https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white
+
+</div>
+
+<i class="fas fa-star"></i> Let's Build Together
+
+```javascript
+const collabGoals = {
+  backend: ['Microservices', 'API Design', 'Database Architecture'],
+  devops: ['Cloud Infrastructure', 'CI/CD Pipelines', 'Containerization'],
+  mentorship: ['Code Reviews', 'Technical Guidance', 'Open Source Contributions']
+};
+
+function reachOut(channel) {
+  if (channel === 'email') {
+    return 'goldenapplecoders@gmail.com';
+  } else if (channel === 'github') {
+    return 'https://github.com/iciiwhite';
+  }
+  return 'Let\'s connect!';
+}
+```
+
+<div align="center">
+
+"Code that scales, solutions that matter."
+
+https://komarev.com/ghpvc/?username=iciiwhite&color=blue&style=flat-square
+
+From Uganda to the World <i class="fas fa-globe"></i>
+
+</div>
 
 ---
 
-From [@iciiwhite](https://github.com/iciiwhite)
+Last Updated: ${new Date().toLocaleDateString('en-US', { 
+weekday: 'long', 
+year: 'numeric', 
+month: 'long', 
+day: 'numeric' 
+})}
+
+<div align="right">
+
+Made with <i class="fas fa-heart"></i> by Icii White
+
+</div>
+
+<!-- Add Font Awesome for icons to work -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
