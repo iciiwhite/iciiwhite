@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Profile Banner](profile%206.png)
+![Profile Banner](https://bedusec.github.io/504/hacker.png)
 
 ### <i class="fas fa-briefcase"></i> CEO & Backend Developer at Golden Apple Technologies
 
