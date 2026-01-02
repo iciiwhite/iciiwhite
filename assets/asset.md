@@ -1,1 +1,0 @@
-# This is the assets folder that has all images and videos that run the page
