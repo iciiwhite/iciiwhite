@@ -15,7 +15,11 @@ A focused developer with an analytical mindset, committed to building robust app
 
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=iciiwhite&layout=compact&hide_border=true&bg_color=30,0d1117,161b22&title_color=ffffff&text_color=c9d1d9)
 
+##### Commit Activity Graph
+![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=iciiwhite&theme=github-dark&hide_border=true&area=true)
 
+##### Repository Star History
+![Star History Chart](https://api.star-history.com/svg?repos=iciiwhite&type=Date)
 #### Connect & Collaborate
 
 I welcome discussions on technology, open-source projects, and innovative ideas.
