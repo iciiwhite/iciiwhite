@@ -15,7 +15,6 @@ A focused developer with an analytical mindset, committed to building robust app
 
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=iciiwhite&layout=compact&hide_border=true&bg_color=30,0d1117,161b22&title_color=ffffff&text_color=c9d1d9)
 
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=iciiwhite&hide_border=true&background=0d1117&stroke=30363d&ring=58a6ff&fire=58a6ff&currStreakLabel=58a6ff)
 
 #### Connect & Collaborate
 
