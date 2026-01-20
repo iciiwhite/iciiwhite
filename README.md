@@ -7,13 +7,13 @@
 
 A focused developer with an analytical mindset, committed to building robust applications and adhering to engineering best practices. This space documents the journey of turning complex problems into elegant, efficient solutions.
 
-### Technical Proficiencies
+#### Technical Proficiencies
 
 
-### Current Focus & Projects
-### GitHub Activity
+#### Current Focus & Projects
+#### GitHub Activity
 
 
-### Connect & Collaborate
+#### Connect & Collaborate
 
 I welcome discussions on technology, open-source projects, and innovative ideas.
