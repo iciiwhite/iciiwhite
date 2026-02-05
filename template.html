@@ -1,3 +1,5 @@
+![img](dance.svg)
+
 <div align="center">
     <div style="border: 2px solid #58a6ff; border-radius: 10px; padding: 20px; background-color: #0d1117; font-family: sans-serif;">
         <h1 style="color: #58a6ff;">TERM PROGRESS</h1>
