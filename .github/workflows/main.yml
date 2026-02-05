@@ -16,8 +16,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - run: |
-          git config --global user.name "HostelBot"
-          git config --global user.email "bot@hostel.com"
+          git config --global user.name "GrettaBot"
+          git config --global user.email "gretta@bot.com"
           git add .
-          git commit -m "Daily Sync" || exit 0
+          git commit -m "Gretta Sync: Update Term Progress" || exit 0
           git push
