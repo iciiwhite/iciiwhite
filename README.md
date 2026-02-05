@@ -1,4 +1,4 @@
-# 🚀 Terminal: Icii's Offline Workspace
+# ᑍ Icii's Offline
 
 ![Gretta In Control](https://img.shields.io/badge/Gretta_In_Control-FF6B6B?style=for-the-badge&logo=google-gemini&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-School_Mode-red?style=for-the-badge)
