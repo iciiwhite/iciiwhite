@@ -1,0 +1,56 @@
+<svg fill="none" viewBox="0 0 500 60" width="500" height="60" xmlns="http://www.w3.org/2000/svg">
+	<foreignObject width="100%" height="100%">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<style>
+				.container {
+					font-family: 'Courier New', Courier, monospace; 
+					font-size: 28px;
+					font-weight: bold;
+					color: #ffffff; 
+					display: flex;
+					align-items: center;
+					height: 60px;
+                    white-space: pre;
+				}
+				
+				
+				@keyframes wave {
+					0%, 100% { transform: translateY(0); opacity: 0.8; }
+					50% { transform: translateY(-8px); opacity: 1; text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); }
+				}
+
+				span {
+					display: inline-block;
+					animation: wave 1.4s infinite ease-in-out;
+				}
+
+				
+				span:nth-child(1) { animation-delay: 0.0s; }
+				span:nth-child(2) { animation-delay: 0.1s; }
+				span:nth-child(3) { animation-delay: 0.2s; }
+				span:nth-child(4) { animation-delay: 0.3s; }
+				span:nth-child(5) { animation-delay: 0.4s; }
+				span:nth-child(6) { animation-delay: 0.5s; }
+				span:nth-child(7) { animation-delay: 0.6s; }
+				span:nth-child(8) { animation-delay: 0.7s; }
+				span:nth-child(9) { animation-delay: 0.8s; }
+				span:nth-child(10) { animation-delay: 0.9s; }
+				span:nth-child(11) { animation-delay: 1.0s; }
+				span:nth-child(12) { animation-delay: 1.1s; }
+				span:nth-child(13) { animation-delay: 1.2s; }
+				span:nth-child(14) { animation-delay: 1.3s; }
+				span:nth-child(15) { animation-delay: 1.4s; }
+				span:nth-child(16) { animation-delay: 1.5s; }
+				span:nth-child(17) { animation-delay: 1.6s; }
+				span:nth-child(18) { animation-delay: 1.7s; }
+				span:nth-child(19) { animation-delay: 1.8s; }
+				span:nth-child(20) { animation-delay: 1.9s; }
+				span:nth-child(21) { animation-delay: 2.0s; }
+			</style>
+
+			<div class="container">
+				<span>M</span><span>y</span><span> </span><span>n</span><span>a</span><span>m</span><span>e</span><span> </span><span>i</span><span>s</span><span> </span><span>I</span><span>c</span><span>i</span><span>i</span><span> </span><span>W</span><span>h</span><span>i</span><span>t</span><span>e</span>
+			</div>
+		</div>
+	</foreignObject>
+</svg>
