@@ -1,0 +1,23 @@
+name: Global Manager
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+jobs:
+  manage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: node index.js
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - run: |
+          git config --global user.name "HostelBot"
+          git config --global user.email "bot@hostel.com"
+          git add .
+          git commit -m "Daily Sync" || exit 0
+          git push
