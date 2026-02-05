@@ -119,7 +119,7 @@ async function run() {
         <div class="monitor-grid">
             <div class="monitor-item"><div class="monitor-label">GITHUB</div><div class="monitor-value">CONNECTED</div></div>
             <div class="monitor-item"><div class="monitor-label">GITLAB</div><div class="monitor-value">SYNCED</div></div>
-            <div class="monitor-item"><div class="monitor-label">NETLIFY</div><div class="monitor-value">ACTIVE</div></div>
+
             <div class="monitor-item"><div class="monitor-label">BITBUCKET</div><div class="monitor-value">STANDBY</div></div>
         </div>
 
