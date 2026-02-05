@@ -1,8 +1,12 @@
 {
-  "name": "github-hostel-manager",
+  "name": "gretta-bot-manager",
   "version": "1.0.0",
+  "description": "Profile term progress and Gretta Bot project manager",
   "main": "index.js",
   "dependencies": {
     "octokit": "^3.1.2"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }
