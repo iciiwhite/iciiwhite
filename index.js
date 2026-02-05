@@ -65,7 +65,7 @@ async function run() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gretta Command Center</title>
+    <title>Gretta In Service</title>
     <style>
         :root {
             --bg: #010409;
@@ -108,10 +108,10 @@ async function run() {
 <body>
     <div class="dashboard">
         <div class="top-bar">
-            <div class="logo">GRETTA // COMMAND</div>
+            <div class="logo">GRETT</div>
             <div class="system-status">
                 <div><span class="status-dot">●</span> System: Online</div>
-                <div>Security: Level 5</div>
+                <div>Security: Lvl 5</div>
                 <div>Uptime: 99.9%</div>
             </div>
         </div>
