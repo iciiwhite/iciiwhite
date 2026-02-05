@@ -1,8 +1,8 @@
-# ᑍ Icii's Offline
+# 🚀 Terminal: Icii's Offline Workspace
 
 ![Gretta In Control](https://img.shields.io/badge/Gretta_In_Control-FF6B6B?style=for-the-badge&logo=google-gemini&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-School_Mode-red?style=for-the-badge)
-![Term Progress](https://img.shields.io/badge/Semester_Progress-{{PROGRESS}}%25-blue?style=for-the-badge)
+![Term Progress](https://img.shields.io/badge/Semester_Progress-5%25-blue?style=for-the-badge)
 
 ---
 
@@ -10,9 +10,9 @@
 | Metric | Value |
 | :--- | :--- |
 | **System Status** | 😴 Hibernation (Boarding School) |
-| **Remaining Days** | `{{DAYS}} Days` |
-| **Semester Completion** | `{{PROGRESS}}%` |
-| **Last Global Sync** | `{{DATE}}` |
+| **Remaining Days** | `89 Days` |
+| **Semester Completion** | `5%` |
+| **Last Global Sync** | `Thu Feb 05 2026` |
 
 ### 🤖 Management Logic
 > [!NOTE]
