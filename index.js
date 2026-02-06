@@ -108,7 +108,7 @@ async function run() {
 <body>
     <div class="dashboard">
         <div class="top-bar">
-            <div class="logo">GRETT</div>
+            <div class="logo">GRETTA</div>
             <div class="system-status">
                 <div><span class="status-dot">●</span> System: Online</div>
                 <div>Security: Lvl 5</div>
