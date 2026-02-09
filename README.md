@@ -10,9 +10,9 @@
 | Metric | Value |
 | :--- | :--- |
 | **System Status** |  Hibernation (Boarding School) |
-| **Remaining Days** | `86 Days` |
+| **Remaining Days** | `85 Days` |
 | **Semester Completion** | `9%` |
-| **Last Global Sync** | `Sun Feb 08 2026` |
+| **Last Global Sync** | `Mon Feb 09 2026` |
 
 ###  Management Logic
 > [!NOTE]
