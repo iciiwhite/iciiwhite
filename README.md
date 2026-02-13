@@ -2,7 +2,7 @@
 
 ![Gretta In Control](https://img.shields.io/badge/Gretta_In_Control-FF6B6B?style=for-the-badge&logo=google-gemini&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-School_Mode-red?style=for-the-badge)
-![Term Progress](https://img.shields.io/badge/Semester_Progress-13%25-blue?style=for-the-badge)
+![Term Progress](https://img.shields.io/badge/Semester_Progress-14%25-blue?style=for-the-badge)
 
 ---
 
@@ -11,7 +11,7 @@
 | :--- | :--- |
 | **System Status** |  Hibernation (Boarding School) |
 | **Remaining Days** | `81 Days` |
-| **Semester Completion** | `13%` |
+| **Semester Completion** | `14%` |
 | **Last Global Sync** | `Fri Feb 13 2026` |
 
 ###  Management Logic
